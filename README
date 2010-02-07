@@ -1,0 +1,24 @@
+= Intellisense support for NHaml files =
+
+== Install ==
+
+Download the .msi intaller file from the Download section, and run it.
+It is tested to work with Visual Studio 2008 x64 Professional edition.
+It might not work with other editions.
+
+== Usage ==
+
+Intellisense support will only be enabled for all files with .haml extension
+inside a Web Project. You will have to have the .haml files inside a Web Project
+for the Intellisense to work.
+
+== Compilation ==
+
+To compile you will need to have the Visual Studio 2008 SDK.
+
+== Known bugs ==
+
+NHaml Intellisens support is based on the Spark View Engine Intellisense library.
+The bugs and limitations found there also apply to the NHaml Intellisense Library.
+
+Check: http://sparkviewengine.com/usage/intellisense
