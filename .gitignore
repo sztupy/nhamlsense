@@ -1,12 +1,10 @@
-shaml/**/bin
-shaml/**/Bin
-webbase/**/bin
-webbase/**/Bin
-webbase/bin
+bin
+Bin
 obj
 TestResults
 TestResult.xml
 drops
+DebugPS
 log.txt
 *.VisualState.xml
 StyleCop.Cache
@@ -20,5 +18,6 @@ PrecompiledWeb
 *.ldf
 *.mdf
 *.swx
+*.ncb
 .dotest
 .sass-cache

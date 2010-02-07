@@ -1,0 +1,179 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#ifndef APSTUDIO_INVOKED
+#include "targetver.h"
+#ifdef RETAIL
+#include "packageloadkey.h"
+#endif
+#endif
+#include "winres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#ifndef APSTUDIO_INVOKED\r\n"
+    "#include ""targetver.h""\r\n"
+    "#ifdef RETAIL\r\n"
+    "#include ""packageloadkey.h""\r\n"
+    "#endif\r\n"
+    "#endif\r\n"
+    "#include ""winres.h""\r\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "1 TYPELIB ""NHamlLanguagePackage.tlb""\r\n"
+    "\r\n"
+    "#include ""..\\..\\CommonVersionInfo.h""\r\n"
+    "\r\n"
+    "VS_VERSION_INFO VERSIONINFO\r\n"
+    " FILEVERSION VERSIONINFO_MAJOR,VERSIONINFO_MINOR,VERSIONINFO_BUILD,VERSIONINFO_REVISION\r\n"
+    " PRODUCTVERSION VERSIONINFO_MAJOR,VERSIONINFO_MINOR,VERSIONINFO_BUILD,VERSIONINFO_REVISION\r\n"
+    " FILEFLAGSMASK 0x3fL\r\n"
+    "#ifdef _DEBUG\r\n"
+    " FILEFLAGS 0x1L\r\n"
+    "#else\r\n"
+    " FILEFLAGS 0x0L\r\n"
+    "#endif\r\n"
+    " FILEOS 0x4L\r\n"
+    " FILETYPE 0x2L\r\n"
+    " FILESUBTYPE 0x0L\r\n"
+    "BEGIN\r\n"
+    "    BLOCK ""StringFileInfo""\r\n"
+    "    BEGIN\r\n"
+    "        BLOCK ""040904e4""\r\n"
+    "        BEGIN\r\n"
+    "            VALUE ""CompanyName"", VERSIONINFO_COMPANY\r\n"
+    "            VALUE ""FileDescription"", ""NHaml View Engine""\r\n"
+    "            VALUE ""FileVersion"", VERSIONINFO_VERSIONSTRING\r\n"
+    "            VALUE ""InternalName"", ""NHamlLanguagePackage.dll""\r\n"
+    "            VALUE ""LegalCopyright"", VERSIONINFO_COPYRIGHT\r\n"
+    "            VALUE ""OriginalFilename"", ""NHamlLanguagePackage.dll""\r\n"
+    "            VALUE ""ProductName"", VERSIONINFO_PRODUCT\r\n"
+    "            VALUE ""ProductVersion"", VERSIONINFO_VERSIONSTRING\r\n"
+    "        END\r\n"
+    "    END\r\n"
+    "    BLOCK ""VarFileInfo""\r\n"
+    "    BEGIN\r\n"
+    "        VALUE ""Translation"", 0x409, 1252\r\n"
+    "    END\r\n"
+    "END\r\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// REGISTRY
+//
+
+IDR_NHAMLLANGUAGEPACKAGE REGISTRY                "NHamlLanguagePackage.rgs"
+IDR_PACKAGE             REGISTRY                "Package.rgs"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_NHAML               ICON                    "nhaml.ico"
+IDI_ORBZ_LIGHTNING      ICON                    "orbz-lightning.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_SPLASH              BITMAP                  "splash.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDS_PROJNAME            "NHamlLanguagePackage"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+1 TYPELIB "NHamlLanguagePackage.tlb"
+
+#include "..\..\CommonVersionInfo.h"
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION VERSIONINFO_MAJOR,VERSIONINFO_MINOR,VERSIONINFO_BUILD,VERSIONINFO_REVISION
+ PRODUCTVERSION VERSIONINFO_MAJOR,VERSIONINFO_MINOR,VERSIONINFO_BUILD,VERSIONINFO_REVISION
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x2L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904e4"
+        BEGIN
+            VALUE "CompanyName", VERSIONINFO_COMPANY
+            VALUE "FileDescription", "NHaml View Engine"
+            VALUE "FileVersion", VERSIONINFO_VERSIONSTRING
+            VALUE "InternalName", "NHamlLanguagePackage.dll"
+            VALUE "LegalCopyright", VERSIONINFO_COPYRIGHT
+            VALUE "OriginalFilename", "NHamlLanguagePackage.dll"
+            VALUE "ProductName", VERSIONINFO_PRODUCT
+            VALUE "ProductVersion", VERSIONINFO_VERSIONSTRING
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1252
+    END
+END
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

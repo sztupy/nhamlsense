@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Include xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <RegistryKey Root="HKLM" Key="Software\Microsoft\VisualStudio\9.0\Packages\{129e4f09-abae-4d87-abf3-b8ae192df3c0}">
+    <RegistryValue Value="NHaml Language Package" Type="string"/>
+    <RegistryValue Name="InprocServer32" Value="[#NHamlLanguagePackage.dll]" Type="string" />
+    <RegistryValue Name="CompanyName" Value="Zsolt Sz. Sztupak" Type="string" />
+    <RegistryValue Name="ProductName" Value="NHaml View Engine" Type="string" />
+    <RegistryValue Name="ProductVersion" Value="1.0" Type="string" />
+    <RegistryValue Name="MinEdition" Value="standard" Type="string" />
+    <RegistryValue Name="ID" Value="101" Type="integer" />
+    <RegistryKey Key="SatelliteDll">
+      <RegistryValue Name="DllName" Value="NHamlLanguagePackageUI.dll" Type="string" />
+      <RegistryValue Name="Path" Value="[INSTALLLOCATION]" Type="string" />
+    </RegistryKey>
+  </RegistryKey>
+  <RegistryKey Root="HKLM" Key="Software\Microsoft\VisualStudio\9.0\Services\{d69e4857-0cd5-41f3-91c9-bbf9d89ccbf6}">
+    <RegistryValue Value="{129e4f09-abae-4d87-abf3-b8ae192df3c0}" Type="string"/>
+    <RegistryValue Name="Name" Value="NHaml Language Service" Type="string" />
+  </RegistryKey>
+  <RegistryKey Root="HKLM" Key="Software\Microsoft\VisualStudio\9.0\Languages\Language Services\NHaml">
+    <RegistryValue Value="{d69e4857-0cd5-41f3-91c9-bbf9d89ccbf6}" Type="string"/>
+    <RegistryValue Name="Package" Value="{129e4f09-abae-4d87-abf3-b8ae192df3c0}" Type="string" />
+  </RegistryKey>
+  <RegistryKey Root="HKLM" Key="Software\Microsoft\VisualStudio\9.0\Languages\File Extensions\.haml">
+    <RegistryValue Value="{d69e4857-0cd5-41f3-91c9-bbf9d89ccbf6}" Type="string"/>
+  </RegistryKey>
+  <RegistryKey Root="HKLM" Key="Software\Microsoft\VisualStudio\9.0\InstalledProducts\NHaml View Engine">
+    <RegistryValue Name="Package" Value="{129e4f09-abae-4d87-abf3-b8ae192df3c0}" Type="string" />
+    <RegistryValue Name="UseInterface" Value="1" Type="integer" />
+  </RegistryKey>
+</Include>
+

@@ -1,0 +1,94 @@
+HKCR
+{
+  // None of this is meaningful - the package is obtained with the registry info below
+  
+	NHamlLanguage.Package.1 = s 'Package Class'
+	{
+		CLSID = s '{129e4f09-abae-4d87-abf3-b8ae192df3c0}'
+	}
+	NHamlLanguage.Package = s 'Package Class'
+	{
+		CLSID = s '{129e4f09-abae-4d87-abf3-b8ae192df3c0}'
+		CurVer = s 'NHamlLanguage.Package.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {129e4f09-abae-4d87-abf3-b8ae192df3c0} = s 'Package Class'
+		{
+			ProgID = s 'NHamlLanguage.Package.1'
+			VersionIndependentProgID = s 'NHamlLanguage.Package'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Both'
+			}
+			'TypeLib' = s '{b5442924-fb3a-4458-b8a5-a2d049db7cba}'
+		}
+	}
+}
+
+HKCU
+{
+  NoRemove Software
+  {
+    NoRemove Microsoft
+    {
+      NoRemove VisualStudio
+      {
+        // DEBUG registry for compile-and-run development
+        NoRemove 9.0Exp
+        {
+          NoRemove Configuration
+          {
+            NoRemove InstalledProducts
+            {
+              ForceRemove 'NHaml View Engine'
+              {
+                val Package = s '{129e4f09-abae-4d87-abf3-b8ae192df3c0}'
+                val UseInterface = d 1
+              }
+            }
+            NoRemove Packages
+            {
+              ForceRemove '{129e4f09-abae-4d87-abf3-b8ae192df3c0}' = s 'NHaml Language Package'
+              {
+                val InprocServer32 =  s '%MODULE%'
+                val CompanyName = s 'Louis DeJardin'
+                val ProductName = s 'NHaml View Engine'
+                val ProductVersion = s '1.0'
+                val MinEdition = s 'Standard'
+                val ID = d 101
+                
+                ForceRemove 'SatelliteDll'
+                {
+                  val DllName = s 'NHamlLanguagePackageUI.dll'
+                  val Path = s '%MODULE_PATH%'
+                }
+              }
+            }
+            NoRemove Services
+            {
+              ForceRemove '{d69e4857-0cd5-41f3-91c9-bbf9d89ccbf6}' = s '{129e4f09-abae-4d87-abf3-b8ae192df3c0}'
+              {
+                val Name = s 'NHaml Language Service'
+              }
+            }
+            NoRemove Languages
+            {
+              NoRemove 'Language Services'
+              {
+                ForceRemove NHaml = s '{d69e4857-0cd5-41f3-91c9-bbf9d89ccbf6}'
+                {
+                  val Package = s '{129e4f09-abae-4d87-abf3-b8ae192df3c0}'
+                }
+              }
+              NoRemove 'File Extensions'
+              {
+                ForceRemove '.haml' = s '{d69e4857-0cd5-41f3-91c9-bbf9d89ccbf6}'
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

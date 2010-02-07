@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  
+  <?if "$(var.ProductVersion)" = "" ?>
+  <?undef ProductVersion ?>
+  <?define ProductVersion = "1.0.2.3" ?>
+  <?endif ?>
+  
+  <?define VisualStudioRegistryRoot = "Software\Microsoft\VisualStudio\9.0" ?>
+
+  <Product Id="*"
+           Name="NHaml View Engine"
+           Language="1033"
+           Version="$(var.ProductVersion)"
+           Manufacturer="NHaml View Engine"
+           UpgradeCode="50d164f7-43e6-4030-beb5-bee6f928c7cb">
+    <Package InstallerVersion="200" Compressed="yes" />
+
+    <Upgrade Id="50d164f7-43e6-4030-beb5-bee6f928c7cb">
+      <UpgradeVersion Minimum="$(var.ProductVersion)" OnlyDetect="yes" Property="NEWERVERSIONDETECTED"/>
+      <UpgradeVersion Minimum="1.0.0" IncludeMinimum="yes" Maximum="$(var.ProductVersion)" IncludeMaximum="no" Property="OLDERVERSIONBEINGUPGRADED"/>
+    </Upgrade>
+    <InstallExecuteSequence>
+      <RemoveExistingProducts After="InstallInitialize" />
+    </InstallExecuteSequence>
+
+    <Media Id="1" Cabinet="media1.cab" EmbedCab="yes" />
+
+
+    <!-- Properties -->
+    <Property Id="DEVENV_EXE_PATH">
+      <RegistrySearch Id="RegSearch_DevenvExe_Path" Root="HKLM" Key="$(var.VisualStudioRegistryRoot)\Setup\VS" Name="EnvironmentPath" Type="raw" />
+    </Property>
+
+    <!-- Launch conditions -->
+    <Condition Message="An administrator must approve or install [ProductName]."> Privileged </Condition>
+    <Condition Message="[ProductName] requires Visual Studio 2008."> DEVENV_EXE_PATH </Condition>
+
+    <?define NHamlLanguagePackage.ProjectName = "NHamlLanguagePackage" ?>
+    <?define NHamlLanguagePackage.TargetDir = "$(var.SolutionDir)\$(var.NHamlLanguagePackage.ProjectName)\bin\$(var.Configuration)\" ?>
+    <?define NHamlLanguagePackage.TargetFileName = "$(var.NHamlLanguagePackage.ProjectName).dll" ?>
+    <?define NHamlLanguagePackage.TargetPath = "$(var.NHamlLanguagePackage.TargetDir)$(var.NHamlLanguagePackage.TargetFileName)" ?>
+
+    <?define NHamlLanguagePackageUI.ProjectName = "NHamlLanguagePackageUI" ?>
+    <?define NHamlLanguagePackageUI.TargetDir = "$(var.NHamlLanguagePackage.TargetDir)1033\" ?>
+    <?define NHamlLanguagePackageUI.TargetFileName = "$(var.NHamlLanguagePackageUI.ProjectName).dll" ?>
+    <?define NHamlLanguagePackageUI.TargetPath = "$(var.NHamlLanguagePackageUI.TargetDir)$(var.NHamlLanguagePackageUI.TargetFileName)" ?>
+
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+
+        <Directory Id="INSTALLLOCATION" Name="NHaml">
+          <Component Id="NHamlLanguagePackage.dll" Guid="58307bca-3214-4ece-924f-31cc7a0f4687">
+            <File Id="NHamlLanguagePackage.dll" Name="$(var.NHamlLanguagePackage.TargetFileName)" Source="$(var.NHamlLanguagePackage.TargetPath)" />
+            <?include vs2008.wxi ?>
+          </Component>
+          <Component Id="NHamlLanguage.dll" Guid="8ace6d31-38e4-4566-8652-02be3f266a0c">
+            <File Id="NHamlLanguage.dll" Name="$(var.NHamlLanguage.TargetFileName)" Source="$(var.NHamlLanguage.TargetPath)"/>
+          </Component>
+          <Component Id="Interop.NHamlLanguagePackageLib.dll" Guid="8ace6d33-38e4-4566-8652-02be3f266a0c">
+            <File Id="Interop.NHamlLanguagePackageLib.dll" Name="Interop.NHamlLanguagePackageLib.dll"
+                  Source="$(var.NHamlLanguage.TargetDir)\Interop.NHamlLanguagePackageLib.dll"/>
+          </Component>
+          <Directory Id="Language1033" Name="1033">
+            <Component Id="NHamlLanguagePackageUI.dll" Guid="8ace6d34-38e4-4566-8652-02be3f266a0c">
+              <File Id="NHamlLanguagePackageUI.dll" Name="$(var.NHamlLanguagePackageUI.TargetFileName)" Source="$(var.NHamlLanguagePackageUI.TargetPath)"/>
+            </Component>
+          </Directory>
+        </Directory>
+      </Directory>
+    </Directory>
+
+    <Feature Id="ProductFeature" Title="NHaml" Level="1">
+      <ComponentRef Id="NHamlLanguagePackage.dll" />
+      <ComponentRef Id="NHamlLanguage.dll" />
+      <ComponentRef Id="Interop.NHamlLanguagePackageLib.dll" />
+      <ComponentRef Id="NHamlLanguagePackageUI.dll" />
+    </Feature>
+
+    <InstallExecuteSequence>
+      <Custom Action="CA_DeployPackage" Before="InstallFinalize" />
+    </InstallExecuteSequence>
+
+    <CustomAction Id="CA_DeployPackage" Property="DEVENV_EXE_PATH" ExeCommand="/setup /nosetupvstemplates" Impersonate="no" Execute="deferred" />
+
+  </Product>
+</Wix>
