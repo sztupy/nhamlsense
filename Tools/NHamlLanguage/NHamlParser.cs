@@ -86,7 +86,7 @@ using NHaml.Web.Mvc;
 
         void HandleLine(string line)
         {
-            var match = Regex.Match(line, @"( *)([%.#-=/_])([^ \r\n]*)([^\r\n]*)");
+            var match = Regex.Match(line, @"^( *)([%.#-=/_])([^ \r\n]*)([^\r\n]*)");
             if (match.Success)
             {
                 NHamlTokenType type = NHamlTokenType.PlainText;
