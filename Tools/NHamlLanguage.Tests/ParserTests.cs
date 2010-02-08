@@ -29,7 +29,9 @@ System.Console.WriteLine( x+x);
         [Test]
         public void PrologTest()
         {
-            string input = @"-// System.Web.Mvc,System.Generic;List<string>
+            string input = @"@namespace=System.Web.Mvc
+@namespace=System.Generic
+@type=List<string>
 %tag";
             var parser = new NHamlParser(input);
             parser.Parse();
@@ -41,7 +43,7 @@ System.Console.WriteLine( x+x);
                 NHamlParser.EndText,
                 parser.codeMapper.output);
 
-            input = @"-// ;List<string>
+            input = @"@type=List<string>
 %tag";
             parser = new NHamlParser(input);
             parser.Parse();

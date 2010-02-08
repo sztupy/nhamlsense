@@ -52,26 +52,27 @@ using NHaml.Web.Mvc;
         {
             // Tests for using and model directives
             string line = codeMapper.ReadLine();
-            var match = Regex.Match(line, "-//  *(.*);([^\r\n]*)");
             string model = null;
-            string usings = "";
-            if (match.Success)
+            List<string> usings = new List<string>();
+            var match = Regex.Match(line, "^@(.*)=([^\r\n]*)");
+            while (match.Success)
             {
-                usings = match.Groups[1].ToString();
-                model = match.Groups[2].ToString();
-                if (model.Length==0) {
-                    model = null;
+                if (match.Groups[1].ToString() == "namespace")
+                {
+                    usings.Add(match.Groups[2].ToString());
+                }
+                else if (match.Groups[1].ToString() == "type")
+                {
+                    model = match.Groups[2].ToString();
                 }
                 line = codeMapper.ReadLine();
+                match = Regex.Match(line, "^@(.*)=([^\r\n]*)");
             }
 
             codeMapper.AppendOutputText(UsingDirectives);
-            if (usings.Length > 0)
+            foreach (string s in usings)
             {
-                foreach (string s in usings.Split(','))
-                {
-                    codeMapper.AppendOutputText("using " + s + ";" + System.Environment.NewLine);
-                }
+                codeMapper.AppendOutputText("using " + s + ";" + System.Environment.NewLine);
             }
             codeMapper.AppendOutputText(InitialText(model));
 
